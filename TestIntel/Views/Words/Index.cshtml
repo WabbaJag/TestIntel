@@ -1,0 +1,38 @@
+﻿@model TestIntel.Models.Words
+@{
+    ViewBag.Title = "VOWEL COUNTER";
+}
+
+<html>
+<head>
+
+</head>
+
+<body>
+    <h2>VOWEL COUNTER</h2>
+
+    <div class="center row">
+        @using (Html.BeginForm("/Index", "Words", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <label for="Number">Input a sentence or word:</label>
+                <input type="text" class="form-control" id="Word" name="Word" value="@Model.Word" />
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.Word)
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-default" id="count" value="count" name="Vowels">Submit</button>
+            </div>
+
+            <div class="form-group">
+                <label for="Type">This phrase or word has:</label>
+                <input type="text" class="form-control" id="Amount" name="Amount" value="@Model.Amount" /> words.
+            </div>
+
+        }
+    </div>
+</body>
+</html>

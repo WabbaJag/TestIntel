@@ -1,0 +1,38 @@
+﻿@model TestIntel.Models.Numbers
+@{
+    ViewBag.Title = "NUMBER CLASSIFIER";
+}
+
+<html>
+<head>
+
+</head>
+
+<body>
+    <h2>NUMBER CLASSIFIER</h2>
+
+    <div class="center row">
+        @using (Html.BeginForm("/Index", "Numbers", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <label for="Number">Input a number:</label>
+                <input type="text" class="form-control" id="Number" name="Number" value="@Model.Number" />
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.Number)
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-default" id="type" value="type" name="classify">Submit</button>
+            </div>
+
+            <div class="form-group">
+                <label for="Type">Result:</label>
+                <input type="text" class="form-control" id="Type" name="Type" value="@Model.Type" />
+            </div>
+
+        }
+    </div>
+</body>
+</html>
